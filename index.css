@@ -1,0 +1,255 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    background: linear-gradient(135deg, #1d2b64 0%, #f8cdda 100%);
+    height: 100svh;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, #e6e6e6 0%, #ffffff 100%); 
+    margin: auto;
+    width: 90%;
+    max-width: 520px;
+    gap: 30px;
+    border-radius: 10px;
+}
+
+header {
+    display: flex;
+    position: relative;
+    background-color: rgb(244, 47, 47);
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    padding: 5px 25px;
+    height: 70px;
+    width: 100%;
+    color: white;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    position: absolute;
+    top: 50%;          
+    left: 50%;    
+    transform: translate(-50%, -50%);
+}
+
+.timer h3, .clock{
+   font-size: 1.6rem;
+   cursor: pointer;
+}
+
+.volume {
+    font-size: 2.2rem;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    background-color: rgb(244, 47, 47);
+    justify-content: space-around;
+    align-items: center;
+    align-self: flex-end;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    height: 100px;
+    padding: 0 5px;
+}
+
+footer button {
+    position: relative;
+    height: 40px;
+    color: white;
+    align-self: center;
+    border-radius: 8px;
+    padding: 0 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.play-btn {
+    background-color: #e6e6e6;
+    color: black;
+    padding: 0 9px 0 10px;
+    box-shadow: 0 2px 0px 3px #d5d3d3;;
+    transition: all 0.2s ease;
+    margin: 0 5px 5px 5px;
+}
+
+.play-btn:hover {
+    transform: translateY(1px);
+}
+
+footer button:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    left: 40%;
+    bottom: 0;
+    height: 2px;
+    width: 20%;
+    background-color: black;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+    margin-bottom: 7px;
+}
+
+footer button:nth-child(2):hover::after {
+    transform: scaleX(1);
+    left: 8px;
+    width: 85%;
+}
+
+footer button:nth-child(1) {
+    border-right: 2px solid white;
+    border-radius: 0;
+    padding-right: 5%;
+}
+
+footer button:nth-child(3) {
+    border-left: 2px solid white;
+    border-radius: 0;
+    padding-left: 5%;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(60px, 90px));
+    grid-template-rows: repeat(3, 120px);
+    justify-content: center;
+    padding: 0 1rem;
+    width: 100%;
+    gap: 15px;
+    user-select: none;
+}
+
+.card {
+    perspective: 1000px;
+    transition: all 0.2s;
+}
+
+.card.selected:hover {
+    transform: translateY(-1px);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d; 
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+    cursor: pointer;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+.allowed {
+    cursor: pointer;
+}
+
+
+@media (max-width: 425px) {
+
+    h1 {
+        font-size: 1.5rem;
+        padding-right: 8px;
+    }
+
+    .volume {
+        font-size: 1.7rem;
+    }
+
+    .timer h3, .timer .clock {
+        font-size: 1.2rem;
+    }
+
+    .cards-container{
+        grid-template-columns: repeat(3, minmax(60px, 80px));
+        grid-template-rows: repeat(4, 90px);
+        gap: 20px;
+    }
+
+    footer {
+        height: 90px;
+    }
+
+    footer button {
+        margin: 0 5px;
+    }
+
+    footer button:nth-child(1) {
+        font-size: 0.7rem;
+        padding-right: 1%;
+    }
+
+    footer button:nth-child(2) {
+        font-size: 0.8rem;
+    }
+    
+    footer button:nth-child(3) {
+        padding-left: 1%;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 520px) {
+
+    footer button {
+        font-size: 0.9rem;
+        height: 35px;
+    }
+
+    footer button:nth-child(1) {
+        padding-right: 3%;
+    }
+    
+    footer button:nth-child(3) {
+        padding-left: 3%;
+    }
+
+    footer button:nth-child(2):hover::after {
+        display: none;
+    }
+    
+}
+
